@@ -1,0 +1,1 @@
+https://node-red-iiqmy.eu-gb.mybluemix.net/chat

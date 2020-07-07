@@ -1,0 +1,262 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            
+*{
+    text-align: center;
+    margin: 0 auto;
+}
+
+body{
+    overflow-y: hidden;
+    background-color: #BCC6CC;
+}
+
+header{
+    height: 70px;
+    padding: 18px;
+    border-radius: 3em 3em 0em 0em;
+    display: inline-block;
+    background-color: #6960EC;
+    margin-top: 1%;
+}
+footer{
+    height: 5%;
+    padding: 2%;
+    border-radius:1em;
+    width: 80%;
+    display: inline-block;
+    background-color: #E5E4E2;
+    margin: 0.5% auto;
+}
+
+.header{
+    height: 100%;
+    width: 60%;
+    float: left;
+}
+
+.chatbox{
+    background-color: #6960EC;
+    width: 90%;
+    margin: 2% 4% 0% 4%;
+    height: 620px;
+    border: 1px solid black;
+    border-radius: 3em 3em 1em 1em;
+    box-shadow: 10px -5px 10px 5px #888888;
+}
+
+.messagebox{
+    background-color: #E5E4E2;
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.bot-reply,.user-query{
+    display: block;
+    font-size: 28px;
+    margin: 1%;
+    padding: 1% 2%;
+    word-wrap: break-word;
+}
+.bot-reply{
+    text-align: left;
+    float: left;
+    margin-left: 1%;
+    margin-right: 40%;
+    background-color: rgb(162, 156, 252);
+    border: 1px solid black;
+	border-radius: 0em 1em 1em 1em;
+}
+
+.user-query{
+    float: right;
+    text-align: left;
+    margin-right: 1%;
+    margin-left: 40%;
+    background-color: rgb(255, 241, 137);
+    border: 1px solid black;
+	border-radius: 1em 0em 1em 1em;
+}
+
+.inimg{
+	display: block;
+	height: 50%;
+	width: 80%;
+}
+
+.query{
+    float: left;
+    width: 60%;
+    height: 150%;
+    border-radius: 3em;
+    font-size: 35px;
+}
+
+.butn{
+    color: #f8f8f8;
+    font-size: 35px;
+    font-family: Helvetica;
+    background-color: #6960EC;
+    height: 150%;
+    float: right;
+    width: 20%;
+    border-radius: 3em;
+    padding-bottom: 1%;
+}
+
+.butn:hover{
+    
+    animation: btn;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes btn {
+    from {box-shadow: 0px 0px tomato;}
+    to {box-shadow: 0px 0px 10px 5px #fff200; background-color: #f8f396; color:  #6960ec;}
+  }
+
+.butn:focus,.query:focus{
+    outline: none;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+  @media screen and (max-width: 800px) {
+    header{
+        height: 50px;
+        padding: 18px;
+        border-radius: 3em 3em 0em 0em;
+        display: inline-block;
+        background-color: #6960EC;
+        margin-top: 1%;
+    }
+    footer{
+        height: 5%;
+        padding: 18px;
+        border-radius:1em;
+        width: 80%;
+        display: inline-block;
+        background-color: #E5E4E2;
+        margin: 2%;
+    }
+    
+    .chatbox{
+        background-color: #6960EC;
+        width: 90%;
+        margin: 2% 4% 0% 4%;
+        height: 520px;
+        border: 1px solid black;
+        border-radius: 3em 3em 1em 1em;
+        box-shadow: 10px -5px 10px 5px #888888;
+    }
+    
+    .messagebox{
+        background-color: #E5E4E2;
+        height: 350px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    .user-query,.bot-reply{
+        font-size: 12px;
+    }
+    .query{
+        font-size: 12px;
+    }
+    .butn{
+        font-size: 16px;
+    }
+  }
+        </style>
+    </head>
+    <body>
+        <div class="content">
+
+        </div>
+        <div class="chatbox">
+            <header>
+                <img src="https://github.com/AbhishekSoni98/Images/raw/master/Header3.png" class="header">
+            </header>
+            <div class="messagebox" id='messagebox'>
+                <div class="bot-reply">
+                    Hello There! Welcome to Strnger98's ChatBot. This ChatBot is intended to Query about LG's 
+					Smartwatch Urbane W150.
+					<img src="https://github.com/AbhishekSoni98/Images/raw/master/watch.jpg" class="inimg">
+                </div>
+            </div>
+            <footer>
+                <input class="query" id="qry" placeholder="Type your Question here" type="text" />
+                <button class="butn" id="butn" type="submit" onclick="sendmsg();" >Ask!</button>
+            </footer>
+        </div>
+
+    </body>
+    <script>
+        var wsUri = "wss://{{req.headers.host}}/ws/chat";
+        var ws = new WebSocket(wsUri);
+        function sendmsg()
+        {
+            x = document.getElementById("qry").value;
+            if (x==="")
+            {
+                alert("Please Enter your Question First!");
+            }
+            else
+            {
+                document.getElementById("qry").value="";
+                console.log(x);
+                var nd = document.createElement('div');
+                nd.className = "user-query";
+                nd.innerHTML = x;
+                document.getElementById('messagebox').appendChild(nd);
+                var element = document.getElementById("messagebox");
+                element.scrollTop = element.scrollHeight;
+                ws.send(x);
+            }
+            ws.onmessage = function(ev){
+                var payload = ev.data;
+                console.log(payload);
+                var nd = document.createElement('div');
+                nd.className = "bot-reply";
+                nd.innerHTML = payload;
+                document.getElementById('messagebox').appendChild(nd);
+                var element = document.getElementById("messagebox");
+                element.scrollTop = element.scrollHeight;
+            }
+
+        }
+		var input = document.getElementById("qry");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("butn").click();
+  }
+});
+    </script>
+
+</html>
