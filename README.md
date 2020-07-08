@@ -9,7 +9,7 @@ To take it a step further, the project shall use the Smart Document Understandin
 
 ## Hardware and Software Designing
 1. Create IBM Cloud services
-- Watson Discovery
+-- Watson Discovery
 - Watson Assistant
 - Node Red App
 2. Configure Watson Discovery
