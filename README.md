@@ -26,4 +26,10 @@ To take it a step further, the project shall use the Smart Document Understandin
 The chatbot was successfully made using Watson assistant and using SDU. All the services were
 integrated using Node Red Application.
 
-URL - https://node-red-iiqmy.eu-gb.mybluemix.net/chat
+Chatbot URL - https://node-red-iiqmy.eu-gb.mybluemix.net/chat
+
+Youtube Demo URL -  https://youtu.be/BK5MhrBRbKI
+
+## For Detailed Information
+
+[Documentation.pdf]()
