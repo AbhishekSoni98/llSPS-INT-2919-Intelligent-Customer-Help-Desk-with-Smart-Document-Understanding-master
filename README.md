@@ -9,15 +9,15 @@ To take it a step further, the project shall use the Smart Document Understandin
 
 ## Hardware and Software Designing
 1. Create IBM Cloud services
-• Watson Discovery
-• Watson Assistant
-• Node Red App
+- Watson Discovery
+- Watson Assistant
+- Node Red App
 2. Configure Watson Discovery
-• Import and Annotate the Document
+- Import and Annotate the Document
 3. Create IBM Cloud Functions action.
-• Configure Action script and parameters
+- Configure Action script and parameters
 4. Create a Node red flow to connect all the services together.
 5. Configure Watson Assistant.
-• Create required Intents, Entities, webhooks and Dialog Skills.
+- Create required Intents, Entities, webhooks and Dialog Skills.
 6. Create flow and configure node
 7. Deploy and run Node Red Chatbot App.
