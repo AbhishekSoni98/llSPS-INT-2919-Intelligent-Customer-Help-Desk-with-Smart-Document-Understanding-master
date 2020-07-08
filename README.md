@@ -32,4 +32,4 @@ Youtube Demo URL -  https://youtu.be/BK5MhrBRbKI
 
 ## For Detailed Information
 
-[Documentation.pdf]()
+[Documentation.pdf](https://github.com/AbhishekSoni98/llSPS-INT-2919-Intelligent-Customer-Help-Desk-with-Smart-Document-Understanding-master/blob/master/Documentation.pdf)
